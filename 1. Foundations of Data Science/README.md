@@ -1,60 +1,151 @@
 # Automatidata Taxi Trip Analysis
 
-[![Abrir en Google Colab]([https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/1.%20Foundations%20of%20Data%20Science/trabajo_final_automatidata_completo.ipynb](https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/1.%20Foundations%20of%20Data%20Science/trabajo_final_automatidata.ipynb#scrollTo=OZSXM4q5zrQh))
+[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/1.%20Foundations%20of%20Data%20Science/trabajo_final_automatidata.ipynb)
 
-Proyecto desarrollado como parte del curso **Foundations of Data Science**, correspondiente al Certificado Profesional de Análisis de Datos Avanzado de Google.
+Proyecto desarrollado como parte del curso **Foundations of Data Science**, correspondiente al **Google Advanced Data Analytics Professional Certificate**.
 
 ## Descripción
 
-En este proyecto trabajé como analista de datos para **Automatidata**, una empresa consultora ficticia contratada por la **Comisión de Taxis y Limusinas de Nueva York (NYC TLC)**.
+En este proyecto asumí el rol de analista de datos para **Automatidata**, una empresa de consultoría ficticia contratada por la **New York City Taxi and Limousine Commission (NYC TLC)**.
 
-El objetivo fue inspeccionar y comprender una base de datos de viajes en taxis amarillos, dejándola preparada para futuras etapas de análisis exploratorio, visualización, pruebas estadísticas y modelado predictivo.
+El objetivo fue inspeccionar y comprender una base de datos de viajes realizados en taxis amarillos de Nueva York, con el propósito de prepararla para futuras etapas de:
 
-El trabajo se desarrolló en Python utilizando las bibliotecas **Pandas** y **NumPy**, y siguiendo las cuatro etapas del marco de trabajo **PACE**:
+- Análisis exploratorio de datos.
+- Visualización.
+- Pruebas estadísticas.
+- Modelado predictivo.
+- Comunicación de hallazgos.
 
-- Plan
-- Analyze
-- Construct
-- Execute
+El análisis fue desarrollado en Python mediante las bibliotecas **Pandas** y **NumPy**, siguiendo el marco de trabajo **PACE**: Plan, Analyze, Construct y Execute.
+
+## Objetivos del proyecto
+
+- Comprender el contexto y las necesidades del cliente.
+- Cargar y examinar la base de datos.
+- Identificar los tipos de variables.
+- Revisar valores nulos y posibles inconsistencias.
+- Calcular estadísticas descriptivas.
+- Investigar valores extremos y atípicos.
+- Identificar variables relevantes para futuros modelos predictivos.
+- Comunicar los principales hallazgos al equipo de datos.
 
 ## Archivos del proyecto
 
-- `trabajo_final_automatidata_completo.ipynb`: notebook principal con el análisis desarrollado durante el proyecto.
-- `actividad_corregida_referencia.ipynb`: notebook de referencia utilizado para comparar y validar cálculos e interpretaciones.
-- `2017_Yellow_Taxi_Trip_Data.csv`: base de datos utilizada, compuesta por 22.699 viajes y 18 variables.
+```text
+1. Foundations of Data Science/
+├── 2017_Yellow_Taxi_Trip_Data.csv
+├── README.md
+├── requirements.txt
+└── trabajo_final_automatidata.ipynb
+```
+
+### Descripción de los archivos
+
+- `trabajo_final_automatidata.ipynb`: notebook principal con el análisis completo.
+- `2017_Yellow_Taxi_Trip_Data.csv`: base de datos de viajes de taxis amarillos de Nueva York.
 - `requirements.txt`: bibliotecas necesarias para ejecutar el proyecto.
+- `README.md`: documentación general del proyecto.
+
+## Dataset
+
+La base de datos contiene:
+
+- **22.699 viajes**
+- **18 variables**
+- Información sobre distancia, pasajeros, fechas, tarifas, propinas, peajes, tipos de pago y montos totales.
+
+Algunas de las principales variables son:
+
+- `VendorID`
+- `tpep_pickup_datetime`
+- `tpep_dropoff_datetime`
+- `passenger_count`
+- `trip_distance`
+- `RatecodeID`
+- `payment_type`
+- `fare_amount`
+- `tip_amount`
+- `tolls_amount`
+- `total_amount`
+
+## Metodología PACE
+
+El proyecto fue organizado utilizando el marco de trabajo **PACE**.
+
+### Plan
+
+Se analizó el contexto del proyecto, las necesidades de NYC TLC y la documentación disponible sobre el dataset.
+
+### Analyze
+
+Se inspeccionaron:
+
+- Dimensiones de la base.
+- Tipos de datos.
+- Valores nulos.
+- Estadísticas descriptivas.
+- Distribución de variables.
+- Registros potencialmente anómalos.
+
+### Construct
+
+Se prepararon los datos y se identificaron las variables que podrían utilizarse en futuros análisis estadísticos y modelos predictivos.
+
+### Execute
+
+Se resumieron los principales hallazgos y se formularon recomendaciones para el equipo de datos.
 
 ## Principales hallazgos
 
-- La base de datos contiene 22.699 registros y 18 variables.
-- No se identificaron valores nulos en los registros analizados.
-- Las variables de recogida y llegada estaban almacenadas como texto y requieren su conversión a formato `datetime` para realizar análisis temporales.
-- Se detectaron valores que requieren una revisión adicional, como tarifas negativas, viajes con distancia cero y montos considerablemente elevados.
-- El monto total máximo observado fue de aproximadamente 1.200,29 USD.
-- La propina promedio registrada para los viajes pagados con tarjeta fue de aproximadamente 2,73 USD.
-- Para los pagos en efectivo, el campo de propinas presenta un promedio de 0 USD, ya que estas propinas normalmente no quedan registradas automáticamente en el sistema.
-- Los dos proveedores presentaron montos totales promedio similares, cercanos a 16,30 USD por viaje.
-- `trip_distance` y `total_amount` fueron identificadas como dos variables relevantes para un modelo predictivo inicial.
+- El dataset contiene **22.699 registros y 18 variables**.
+- No se encontraron valores nulos en los registros analizados.
+- Las variables de recogida y llegada están inicialmente almacenadas como texto y deberían convertirse al tipo `datetime`.
+- Se identificaron viajes con distancia igual a cero.
+- Se encontraron tarifas y montos totales negativos.
+- Se observaron montos extremadamente elevados que requieren investigación.
+- El monto total máximo registrado fue de aproximadamente **1.200,29 USD**.
+- La propina promedio para viajes pagados con tarjeta fue de aproximadamente **2,73 USD**.
+- Las propinas en efectivo presentan un promedio de cero porque normalmente no quedan registradas electrónicamente en el sistema.
+- Los dos proveedores presentaron montos totales promedio similares, cercanos a **16,30 USD por viaje**.
 
 ## Variables para modelado predictivo
 
-Para una primera aproximación al desarrollo de un modelo predictivo:
+Las dos variables inicialmente identificadas como más útiles para un modelo predictivo son:
 
-- **Variable predictora:** `trip_distance`
-- **Variable objetivo:** `total_amount`
+### Variable predictora
 
-La distancia recorrida puede utilizarse para explicar parte de la variación del monto total cobrado por un viaje.
+```text
+trip_distance
+```
 
-Antes de entrenar el modelo, es necesario revisar los valores negativos, las observaciones extremas y los viajes con distancia cero para evitar que distorsionen los resultados.
+La distancia recorrida puede ayudar a explicar el precio de un viaje.
 
-En etapas posteriores también podrían incorporarse variables como:
+### Variable objetivo
+
+```text
+total_amount
+```
+
+Representa el monto total que el modelo podría intentar predecir.
+
+Una primera formulación del modelo sería:
+
+```text
+trip_distance → total_amount
+```
+
+Antes de desarrollar el modelo, se deben revisar los valores negativos, los registros extremos y los viajes con distancia cero para evitar que distorsionen los resultados.
+
+En etapas posteriores también podrían utilizarse variables como:
 
 - Hora de recogida.
 - Hora de llegada.
+- Duración del viaje.
 - Código de tarifa.
 - Peajes.
 - Tipo de pago.
-- Ubicación de origen y destino.
+- Ubicación de origen.
+- Ubicación de destino.
 
 ## Cómo ejecutar el proyecto
 
@@ -62,11 +153,11 @@ En etapas posteriores también podrían incorporarse variables como:
 
 Haz clic en el botón **Abrir en Google Colab** ubicado al inicio de este README.
 
-Cuando se abra el notebook:
+Dentro de Colab:
 
-1. Selecciona **Entorno de ejecución**.
-2. Presiona **Ejecutar todas**.
-3. Espera a que el dataset sea cargado desde GitHub.
+1. Abre el menú **Entorno de ejecución**.
+2. Selecciona **Ejecutar todas**.
+3. Espera a que se cargue el dataset desde GitHub.
 4. Revisa los resultados generados por cada celda.
 
 No es necesario instalar Python ni descargar manualmente el dataset.
@@ -94,36 +185,33 @@ pip install -r requirements.txt
 #### 4. Abrir el notebook
 
 ```bash
-jupyter notebook trabajo_final_automatidata_completo.ipynb
+jupyter notebook trabajo_final_automatidata.ipynb
 ```
 
-#### 5. Ejecutar las celdas
+#### 5. Ejecutar todas las celdas
 
-Dentro de Jupyter Notebook, selecciona:
+Dentro de Jupyter Notebook:
 
 ```text
 Cell → Run All
 ```
 
-### Opción 3: GitHub Codespaces
+## Carga del dataset
 
-1. Entra en el repositorio de GitHub.
-2. Selecciona **Code**.
-3. Abre la pestaña **Codespaces**.
-4. Presiona **Create codespace on main**.
-5. En la terminal, entra en la carpeta:
+El notebook carga el CSV directamente desde GitHub mediante la siguiente URL:
 
-```bash
-cd "1. Foundations of Data Science"
+```python
+DATA_URL = (
+    "https://raw.githubusercontent.com/"
+    "Abraham123w/"
+    "Google-Advanced-Data-Analytics-Professional-Certificate/"
+    "main/"
+    "1.%20Foundations%20of%20Data%20Science/"
+    "2017_Yellow_Taxi_Trip_Data.csv"
+)
 ```
 
-6. Instala las dependencias:
-
-```bash
-pip install -r requirements.txt
-```
-
-7. Abre `trabajo_final_automatidata_completo.ipynb` y ejecuta sus celdas.
+Esto permite ejecutar el análisis en Google Colab sin subir manualmente el archivo.
 
 ## Tecnologías utilizadas
 
@@ -134,17 +222,14 @@ pip install -r requirements.txt
 - Google Colab
 - GitHub
 
-## Metodología
-
-El análisis se organizó utilizando el marco de trabajo **PACE**:
-
-1. **Plan:** comprensión del contexto, los objetivos y las necesidades del cliente.
-2. **Analyze:** inspección de la estructura, los tipos de datos y las estadísticas descriptivas.
-3. **Construct:** preparación de los datos para análisis posteriores.
-4. **Execute:** comunicación de los hallazgos y recomendaciones al equipo de datos.
-
 ## Curso y certificación
 
 **Google Advanced Data Analytics Professional Certificate**
 
 Curso 1: **Foundations of Data Science**
+
+## Autor
+
+**Abraham Andrés Castro Copa**
+
+Ingeniero Civil Industrial orientado al análisis de datos, visualización, automatización e inteligencia artificial.
