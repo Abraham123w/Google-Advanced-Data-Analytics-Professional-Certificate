@@ -1,6 +1,6 @@
 # Automatidata Exploratory Data Analysis
 
-[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/3.%20Go%20Beyond%20the%20Numbers%20Translate%20Data%20into%20Insights/trabajo_final_automatidata_eda.ipynb)
+[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/2.%20Go%20Beyond%20the%20Numbers%20Translate%20Data%20into%20Insights/trabajo_final_automatidata_eda.ipynb)
 
 Proyecto desarrollado como parte del curso **Go Beyond the Numbers: Translate Data into Insights**, correspondiente al **Google Advanced Data Analytics Professional Certificate**.
 
@@ -8,34 +8,40 @@ Proyecto desarrollado como parte del curso **Go Beyond the Numbers: Translate Da
 
 En este proyecto continué el análisis del caso **Automatidata** para la **New York City Taxi and Limousine Commission (NYC TLC)**.
 
-El objetivo fue realizar un análisis exploratorio de datos, limpiar y estructurar la información, identificar valores atípicos y crear visualizaciones que permitieran comprender mejor el comportamiento de los viajes en taxis amarillos de Nueva York.
+El objetivo fue realizar un análisis exploratorio de datos para comprender el comportamiento de los viajes en taxis amarillos de Nueva York, detectar problemas de calidad, identificar valores atípicos y crear visualizaciones que apoyen la toma de decisiones.
 
-El análisis se desarrolló en Python con **Pandas**, **NumPy**, **Matplotlib** y **Seaborn**, siguiendo el marco de trabajo **PACE**: Plan, Analyze, Construct y Execute.
+El trabajo se desarrolló en Python utilizando **Pandas**, **NumPy**, **Matplotlib** y **Seaborn**, siguiendo las cuatro etapas del marco de trabajo **PACE**:
 
-## Objetivos
+- Plan
+- Analyze
+- Construct
+- Execute
 
-- Cargar y revisar el dataset de viajes.
-- Evaluar la estructura y los tipos de datos.
+## Objetivos del proyecto
+
+- Cargar el dataset directamente desde GitHub o desde el entorno local.
+- Revisar la estructura, dimensiones y tipos de datos.
+- Identificar valores nulos, duplicados y posibles anomalías.
 - Convertir las fechas de recogida y llegada a formato `datetime`.
-- Calcular la duración de los viajes.
+- Calcular la duración de cada viaje.
 - Detectar valores atípicos mediante boxplots, histogramas y el método IQR.
-- Analizar distancia, monto total, propinas y cantidad de pasajeros.
-- Examinar viajes e ingresos por mes y día de la semana.
-- Comunicar los hallazgos al equipo de Automatidata y NYC TLC.
+- Analizar la distancia, los montos totales, las propinas y la cantidad de pasajeros.
+- Examinar la cantidad de viajes e ingresos por mes y día de la semana.
+- Comunicar los principales hallazgos al equipo de Automatidata y NYC TLC.
 
-## Archivos del proyecto
+## Estructura del proyecto
 
 ```text
-3. Go Beyond the Numbers Translate Data into Insights/
+2. Go Beyond the Numbers Translate Data into Insights/
 ├── 2017_Yellow_Taxi_Trip_Data.csv
 ├── README.md
 ├── requirements.txt
 └── trabajo_final_automatidata_eda.ipynb
 ```
 
-### Descripción de los archivos
+## Archivos
 
-- `trabajo_final_automatidata_eda.ipynb`: notebook principal con el análisis exploratorio y las visualizaciones.
+- `trabajo_final_automatidata_eda.ipynb`: notebook principal con el análisis exploratorio, la limpieza y las visualizaciones.
 - `2017_Yellow_Taxi_Trip_Data.csv`: dataset utilizado en el proyecto.
 - `requirements.txt`: dependencias necesarias para ejecutar el notebook.
 - `README.md`: documentación general del proyecto.
@@ -46,7 +52,7 @@ El dataset contiene:
 
 - **22.699 viajes**
 - **18 variables**
-- **0 valores nulos** en los registros analizados
+- Información sobre fechas, distancia, cantidad de pasajeros, tarifas, propinas, peajes y montos totales.
 
 Entre las principales variables se encuentran:
 
@@ -64,11 +70,34 @@ Entre las principales variables se encuentran:
 - `tolls_amount`
 - `total_amount`
 
+## Carga automática del dataset
+
+El notebook está configurado para buscar primero el archivo:
+
+```text
+2017_Yellow_Taxi_Trip_Data.csv
+```
+
+en el entorno local o en Google Colab.
+
+Si el archivo no está disponible localmente, se descarga automáticamente desde esta ruta del repositorio:
+
+```text
+2. Go Beyond the Numbers Translate Data into Insights/2017_Yellow_Taxi_Trip_Data.csv
+```
+
+La carga también comprueba:
+
+- Que el archivo no esté vacío.
+- Que el dataset contenga filas y columnas.
+- Que incluya las variables principales esperadas.
+- Que el archivo corresponda al dataset correcto.
+
 ## Metodología PACE
 
 ### Plan
 
-Se revisó el contexto del proyecto y se definieron las variables más relevantes para comprender el comportamiento de los viajes.
+Se revisó el contexto del proyecto, las necesidades de NYC TLC y las variables más útiles para comprender el comportamiento de los viajes.
 
 ### Analyze
 
@@ -77,13 +106,14 @@ Se inspeccionaron:
 - Dimensiones del dataset.
 - Tipos de datos.
 - Valores nulos.
+- Registros duplicados.
 - Estadísticas descriptivas.
 - Distribuciones.
 - Valores extremos y posibles anomalías.
 
 ### Construct
 
-Se crearon nuevas variables y visualizaciones para analizar:
+Se prepararon nuevas variables y visualizaciones para analizar:
 
 - Duración de los viajes.
 - Distancia recorrida.
@@ -92,22 +122,26 @@ Se crearon nuevas variables y visualizaciones para analizar:
 - Número de pasajeros.
 - Viajes por mes.
 - Viajes por día de la semana.
-- Ingresos por mes y día.
+- Ingresos por mes y por día.
+- Relación entre distancia y monto total.
 
 ### Execute
 
-Se resumieron los hallazgos y se formularon recomendaciones para continuar con las futuras etapas de análisis y modelado.
+Se resumieron los hallazgos y se formularon recomendaciones para las siguientes etapas de análisis, visualización y modelado predictivo.
 
 ## Principales hallazgos
 
 - Las variables de fecha estaban almacenadas inicialmente como texto y debieron convertirse a formato `datetime`.
+- El dataset no presenta valores nulos en los registros analizados.
 - Las distribuciones de `trip_distance`, `total_amount` y `tip_amount` presentan asimetría positiva.
-- Se identificaron valores atípicos en distancia, montos y propinas.
-- Algunos registros presentan distancia igual a cero, tarifas negativas o montos extremadamente altos.
-- La mayoría de los viajes tiene una distancia relativamente corta.
-- Los pagos con tarjeta permiten analizar las propinas registradas electrónicamente.
-- La cantidad de viajes y los ingresos cambian según el mes y el día de la semana.
-- Los valores extremos deben investigarse antes de desarrollar modelos predictivos.
+- Se identificaron valores atípicos en la distancia, los montos totales y las propinas.
+- Algunos registros presentan distancia igual a cero.
+- Se observaron tarifas y montos totales negativos.
+- Existen montos extremadamente altos que requieren una investigación adicional.
+- La mayoría de los viajes corresponde a distancias relativamente cortas.
+- Las propinas registradas electrónicamente pueden analizarse principalmente en los pagos con tarjeta.
+- La cantidad de viajes y los ingresos presentan variaciones según el mes y el día de la semana.
+- Los valores extremos deben revisarse antes de entrenar modelos predictivos.
 
 ## Visualizaciones incluidas
 
@@ -117,46 +151,52 @@ El notebook contiene:
 - Histograma de distancia de viaje.
 - Boxplot de monto total.
 - Histograma de monto total.
-- Boxplot e histograma de propinas.
+- Boxplot de propinas para pagos con tarjeta.
+- Histograma de propinas.
 - Comparación de propinas por proveedor.
+- Análisis de propinas superiores a 10 USD.
 - Propina promedio por cantidad de pasajeros.
-- Viajes por mes.
-- Viajes por día de la semana.
-- Ingresos por mes y día.
-- Análisis temporal de los viajes.
+- Cantidad de viajes por mes.
+- Cantidad de viajes por día de la semana.
+- Ingresos por mes.
+- Ingresos por día de la semana.
+- Análisis de duración de viajes.
 - Relación entre distancia y monto total.
 
 ## Tableau
 
-La actividad también propone crear un dashboard opcional en Tableau con un mapa de Nueva York y la distribución mensual de los viajes.
+La actividad también propone desarrollar un dashboard opcional en Tableau Public que muestre un mapa de Nueva York con los viajes por mes.
 
-Al diseñar el dashboard se recomienda:
+Para mejorar la accesibilidad del dashboard se recomienda:
 
-- Utilizar títulos claros.
-- Evitar combinaciones de colores con poco contraste.
-- No depender únicamente del color para comunicar información.
-- Incorporar etiquetas y descripciones accesibles.
-- Mantener una estructura fácil de interpretar para personas sin experiencia técnica.
+- Usar títulos claros y descriptivos.
+- Mantener un contraste visual alto.
+- No depender únicamente del color.
+- Incorporar etiquetas y descripciones.
+- Evitar una cantidad excesiva de elementos.
+- Diseñar la visualización para usuarios sin experiencia técnica.
+- Considerar a personas con discapacidad visual.
 
 ## Cómo ejecutar el proyecto
 
 ### Opción 1: Google Colab
 
-Haz clic en el botón **Abrir en Google Colab** ubicado al comienzo del README.
+Haz clic en el botón **Abrir en Google Colab** ubicado al inicio de este README.
 
-Luego selecciona:
-
-```text
-Entorno de ejecución → Ejecutar todas
-```
-
-El dataset debe llamarse exactamente:
+También puedes utilizar este enlace:
 
 ```text
-2017_Yellow_Taxi_Trip_Data.csv
+https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/2.%20Go%20Beyond%20the%20Numbers%20Translate%20Data%20into%20Insights/trabajo_final_automatidata_eda.ipynb
 ```
 
-y estar disponible en la misma carpeta del notebook o cargarse desde la URL configurada en el código.
+Dentro de Colab:
+
+1. Selecciona **Entorno de ejecución**.
+2. Presiona **Ejecutar todas**.
+3. Espera a que el dataset se cargue desde GitHub.
+4. Revisa las tablas, visualizaciones y conclusiones.
+
+No es necesario subir manualmente el CSV si el archivo está disponible públicamente en GitHub.
 
 ### Opción 2: ejecución local
 
@@ -169,7 +209,7 @@ git clone https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professi
 #### 2. Entrar en la carpeta del proyecto
 
 ```bash
-cd "Google-Advanced-Data-Analytics-Professional-Certificate/3. Go Beyond the Numbers Translate Data into Insights"
+cd "Google-Advanced-Data-Analytics-Professional-Certificate/2. Go Beyond the Numbers Translate Data into Insights"
 ```
 
 #### 3. Crear un entorno virtual
@@ -190,7 +230,7 @@ Activarlo en macOS o Linux:
 source .venv/bin/activate
 ```
 
-#### 4. Instalar dependencias
+#### 4. Instalar las dependencias
 
 ```bash
 pip install -r requirements.txt
@@ -200,6 +240,14 @@ pip install -r requirements.txt
 
 ```bash
 jupyter notebook trabajo_final_automatidata_eda.ipynb
+```
+
+#### 6. Ejecutar todas las celdas
+
+Dentro de Jupyter Notebook:
+
+```text
+Cell → Run All
 ```
 
 ## Tecnologías utilizadas
@@ -218,7 +266,7 @@ jupyter notebook trabajo_final_automatidata_eda.ipynb
 
 **Google Advanced Data Analytics Professional Certificate**
 
-Curso: **Go Beyond the Numbers: Translate Data into Insights**
+Curso 2: **Go Beyond the Numbers: Translate Data into Insights**
 
 ## Autor
 
