@@ -1,6 +1,6 @@
 # Automatidata Taxi Trip Analysis
 
-[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/1.%20Foundations%20of%20Data%20Science/trabajo_final_automatidata_completo.ipynb)
+[![Abrir en Google Colab]([https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/1.%20Foundations%20of%20Data%20Science/trabajo_final_automatidata_completo.ipynb](https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/1.%20Foundations%20of%20Data%20Science/trabajo_final_automatidata.ipynb#scrollTo=OZSXM4q5zrQh))
 
 Proyecto desarrollado como parte del curso **Foundations of Data Science**, correspondiente al Certificado Profesional de Análisis de Datos Avanzado de Google.
 
