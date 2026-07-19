@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Portafolio del Google Advanced Data Analytics Professional Certificate de Abraham Castro: Python, estadística, regresión, machine learning, Tableau y proyectos de negocio."
+  >
+  <meta name="author" content="Abraham Andrés Castro Copa">
+  <meta name="theme-color" content="#07111f">
+
+  <title>Google Advanced Data Analytics | Abraham Castro</title>
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0c192b;
+      --panel: rgba(15, 31, 52, 0.78);
+      --panel-solid: #0f1f34;
+      --panel-hover: #142a46;
+      --text: #f6f9ff;
+      --muted: #a8b7ca;
+      --line: rgba(159, 181, 207, 0.16);
+      --cyan: #22d3ee;
+      --blue: #38bdf8;
+      --indigo: #818cf8;
+      --green: #34d399;
+      --orange: #fb923c;
+      --red: #fb7185;
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.32);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 13px;
+      --max-width: 1180px;
+    }
+
+    body.light-theme {
+      --bg: #f4f8fc;
+      --bg-soft: #eaf1f8;
+      --panel: rgba(255, 255, 255, 0.88);
+      --panel-solid: #ffffff;
+      --panel-hover: #f2f7fc;
+      --text: #102033;
+      --muted: #52657a;
+      --line: rgba(43, 73, 103, 0.15);
+      --shadow: 0 18px 50px rgba(40, 70, 100, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 86px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(34, 211, 238, 0.13), transparent 28rem),
+        radial-gradient(circle at 90% 15%, rgba(129, 140, 248, 0.12), transparent 30rem),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 9999;
+      padding: 10px 14px;
+      color: #06111f;
+      background: var(--cyan);
+      border-radius: 10px;
+      font-weight: 800;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(var(--max-width), 92%);
+      min-height: 74px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      color: #04111c;
+      background: linear-gradient(135deg, var(--cyan), var(--indigo));
+      border-radius: 13px;
+      box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+    }
+
+    .brand span:last-child {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--cyan);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-button,
+    .menu-button {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      cursor: pointer;
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 92px 0 72px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(rgba(34, 211, 238, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      top: 10px;
+      right: -180px;
+      z-index: -1;
+      background: linear-gradient(145deg, rgba(34, 211, 238, 0.28), rgba(129, 140, 248, 0.06));
+      border-radius: 50%;
+      filter: blur(30px);
+    }
+
+    .container {
+      width: min(var(--max-width), 92%);
+      margin: auto;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.88fr);
+      align-items: center;
+      gap: 60px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      color: var(--cyan);
+      background: rgba(34, 211, 238, 0.08);
+      border: 1px solid rgba(34, 211, 238, 0.25);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(52, 211, 153, 0.12);
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 22px 0 20px;
+      font-size: clamp(2.75rem, 7vw, 5.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(100deg, var(--cyan), var(--blue) 45%, var(--indigo));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-copy {
+      max-width: 730px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      font-weight: 850;
+      text-decoration: none;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #06111f;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      box-shadow: 0 15px 35px rgba(34, 211, 238, 0.18);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: var(--panel);
+      border-color: var(--line);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .code-window {
+      overflow: hidden;
+      background: rgba(5, 14, 27, 0.88);
+      border: 1px solid rgba(143, 178, 213, 0.18);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transform: rotate(1.2deg);
+    }
+
+    .window-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 15px 18px;
+      border-bottom: 1px solid rgba(143, 178, 213, 0.12);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .window-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .window-dot:nth-child(1) { background: #fb7185; }
+    .window-dot:nth-child(2) { background: #fbbf24; }
+    .window-dot:nth-child(3) { background: #34d399; }
+
+    .code-content {
+      min-height: 360px;
+      padding: 25px;
+      color: #d5e5f7;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.88rem;
+      line-height: 1.85;
+    }
+
+    .code-comment { color: #64809d; }
+    .code-key { color: #c4b5fd; }
+    .code-fn { color: #67e8f9; }
+    .code-string { color: #86efac; }
+    .code-number { color: #fdba74; }
+
+    .floating-badge {
+      position: absolute;
+      right: -18px;
+      bottom: -23px;
+      padding: 16px 18px;
+      color: #07111f;
+      background: linear-gradient(135deg, #f8fafc, #c9f8ff);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+      font-weight: 900;
+      transform: rotate(-4deg);
+    }
+
+    .floating-badge small {
+      display: block;
+      color: #3e576f;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .stats {
+      padding: 10px 0 70px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .stat-card {
+      padding: 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(14px);
+    }
+
+    .stat-number {
+      color: var(--cyan);
+      font-size: 2rem;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      margin: 14px 0 12px;
+      font-size: clamp(2rem, 4.5vw, 3.45rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .pace-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .pace-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 230px;
+      padding: 25px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+
+    .pace-card::after {
+      content: attr(data-step);
+      position: absolute;
+      right: 14px;
+      bottom: -25px;
+      color: rgba(255, 255, 255, 0.04);
+      font-size: 7rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    body.light-theme .pace-card::after {
+      color: rgba(15, 49, 78, 0.05);
+    }
+
+    .pace-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      color: #07111f;
+      background: linear-gradient(135deg, var(--cyan), var(--indigo));
+      border-radius: 14px;
+      font-weight: 950;
+    }
+
+    .pace-card h3 {
+      margin: 19px 0 9px;
+      font-size: 1.24rem;
+    }
+
+    .pace-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .course-card {
+      position: relative;
+      overflow: hidden;
+      padding: 27px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      background: var(--panel-hover);
+      border-color: rgba(34, 211, 238, 0.32);
+    }
+
+    .course-number {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      color: rgba(34, 211, 238, 0.13);
+      font-size: 4.8rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .course-card h3 {
+      max-width: 78%;
+      margin: 8px 0 12px;
+      font-size: 1.35rem;
+      line-height: 1.25;
+    }
+
+    .course-card p {
+      margin: 0 0 19px;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      color: var(--muted);
+      background: rgba(125, 160, 193, 0.08);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 750;
+    }
+
+    .course-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--cyan);
+      font-size: 0.86rem;
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .project-layout {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-top {
+      min-height: 230px;
+      padding: 30px;
+      display: flex;
+      align-items: flex-end;
+      background:
+        linear-gradient(to top, rgba(4, 14, 27, 0.92), rgba(4, 14, 27, 0.08)),
+        radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.5), transparent 15rem),
+        linear-gradient(135deg, #0d3850, #101e46);
+    }
+
+    .feature-card:nth-child(2) .feature-top {
+      background:
+        linear-gradient(to top, rgba(4, 14, 27, 0.92), rgba(4, 14, 27, 0.08)),
+        radial-gradient(circle at 85% 10%, rgba(129, 140, 248, 0.55), transparent 15rem),
+        linear-gradient(135deg, #25245b, #102a47);
+    }
+
+    .feature-top h3 {
+      margin: 8px 0 0;
+      color: #fff;
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+    }
+
+    .feature-body {
+      padding: 27px 30px 30px;
+    }
+
+    .feature-body p {
+      margin-top: 0;
+      color: var(--muted);
+    }
+
+    .finding-list {
+      margin: 18px 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .finding-list li {
+      position: relative;
+      margin: 10px 0;
+      padding-left: 24px;
+      color: var(--muted);
+    }
+
+    .finding-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .tableau-section {
+      background:
+        linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.035), transparent);
+    }
+
+    .tableau-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .tableau-card {
+      overflow: hidden;
+      background: var(--panel-solid);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: 0 16px 46px rgba(0, 0, 0, 0.18);
+      transition: transform 0.2s ease;
+    }
+
+    .tableau-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .tableau-preview {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: #fff;
+    }
+
+    .tableau-preview img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.35s ease;
+    }
+
+    .tableau-card:hover .tableau-preview img {
+      transform: scale(1.025);
+    }
+
+    .preview-overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      background: rgba(3, 11, 21, 0.62);
+      transition: opacity 0.2s ease;
+    }
+
+    .tableau-card:hover .preview-overlay,
+    .tableau-card:focus-within .preview-overlay {
+      opacity: 1;
+    }
+
+    .play-button {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      color: #07111f;
+      background: var(--cyan);
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(34, 211, 238, 0.3);
+    }
+
+    .tableau-content {
+      padding: 24px;
+    }
+
+    .tableau-content h3 {
+      margin: 7px 0 10px;
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .tableau-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .tableau-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+    }
+
+    .skills-panel {
+      padding: 30px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+    }
+
+    .skills-panel h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+
+    .tool-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tool {
+      padding: 10px 13px;
+      color: var(--text);
+      background: rgba(125, 160, 193, 0.075);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 0.86rem;
+      font-weight: 760;
+    }
+
+    .competency-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .competency {
+      display: flex;
+      gap: 12px;
+      padding: 14px;
+      background: rgba(125, 160, 193, 0.055);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .competency-number {
+      flex: 0 0 31px;
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      color: #07111f;
+      background: var(--cyan);
+      border-radius: 10px;
+      font-size: 0.76rem;
+      font-weight: 950;
+    }
+
+    .competency strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .competency span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .cta {
+      padding-bottom: 100px;
+    }
+
+    .cta-card {
+      padding: clamp(32px, 6vw, 65px);
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(34, 211, 238, 0.18), transparent 22rem),
+        radial-gradient(circle at 90% 100%, rgba(129, 140, 248, 0.16), transparent 25rem),
+        var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-card h2 {
+      max-width: 830px;
+      margin: 0 auto 15px;
+      font-size: clamp(2.1rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .cta-card p {
+      max-width: 700px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    footer {
+      padding: 30px 0 45px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 700;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      color: #06111f;
+      background: var(--cyan);
+      border: 0;
+      border-radius: 14px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.28);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .viz-dialog {
+      width: min(1200px, 95vw);
+      height: min(860px, 90vh);
+      padding: 0;
+      color: var(--text);
+      background: var(--panel-solid);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .viz-dialog::backdrop {
+      background: rgba(1, 6, 14, 0.82);
+      backdrop-filter: blur(5px);
+    }
+
+    .dialog-header {
+      min-height: 64px;
+      padding: 13px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dialog-header h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .dialog-close {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .viz-frame {
+      width: 100%;
+      height: calc(100% - 65px);
+      display: block;
+      background: #fff;
+      border: 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 860px) {
+      .brand span:last-child {
+        display: inline;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        max-width: 720px;
+      }
+
+      .stats-grid,
+      .pace-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 74px;
+        left: 4%;
+        right: 4%;
+        padding: 18px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        background: var(--panel-solid);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 11px 12px;
+        border-radius: 10px;
+      }
+
+      .nav-links a:hover {
+        background: rgba(125, 160, 193, 0.08);
+      }
+
+      .menu-button {
+        display: grid;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .courses-grid,
+      .project-layout,
+      .tableau-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .hero-grid {
+        gap: 42px;
+      }
+
+      .floating-badge {
+        right: 8px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .footer-grid {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .stats-grid,
+      .pace-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2.75rem;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .code-content {
+        padding: 20px;
+        font-size: 0.76rem;
+      }
+
+      .course-card h3 {
+        max-width: 100%;
+        padding-right: 40px;
+      }
+
+      .tableau-actions .button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark">AC</span>
+        <span>Advanced Data Analytics</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#metodologia">Metodología</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#tableau">Tableau</a>
+        <a href="#herramientas">Herramientas</a>
+      </div>
+
+      <div class="nav-actions">
+        <button
+          class="icon-button"
+          id="themeButton"
+          type="button"
+          aria-label="Cambiar tema"
+          title="Cambiar tema"
+        >
+          <span id="themeIcon">☀</span>
+        </button>
+
+        <button
+          class="menu-button"
+          id="menuButton"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          aria-label="Abrir menú"
+        >
+          ☰
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Portafolio de certificación
+          </span>
+
+          <h1>
+            Google Advanced
+            <span class="gradient-text">Data Analytics</span>
+          </h1>
+
+          <p class="hero-copy">
+            Recorrido práctico por análisis exploratorio, estadística,
+            regresión y machine learning, aplicado a problemas de movilidad
+            urbana y gestión de personas mediante Python, Tableau y el marco PACE.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver repositorio en GitHub
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a class="button button-secondary" href="#tableau">
+              Explorar dashboards
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <div class="hero-meta" aria-label="Información del proyecto">
+            <span>✓ Notebooks en Google Colab</span>
+            <span>✓ Proyectos reproducibles</span>
+            <span>✓ Comunicación orientada al negocio</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Ejemplo de flujo analítico">
+          <div class="code-window">
+            <div class="window-bar">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+            </div>
+
+            <div class="code-content" aria-hidden="true">
+              <span class="code-comment"># Flujo PACE aplicado</span><br>
+              <span class="code-key">project</span> = {<br>
+              &nbsp;&nbsp;<span class="code-string">"plan"</span>:
+              <span class="code-string">"Definir problema y stakeholders"</span>,<br>
+              &nbsp;&nbsp;<span class="code-string">"analyze"</span>:
+              <span class="code-string">"Explorar, limpiar y visualizar"</span>,<br>
+              &nbsp;&nbsp;<span class="code-string">"construct"</span>:
+              <span class="code-string">"Estadística y modelos predictivos"</span>,<br>
+              &nbsp;&nbsp;<span class="code-string">"execute"</span>:
+              <span class="code-string">"Evaluar y recomendar"</span><br>
+              }<br><br>
+              <span class="code-key">model</span> =
+              <span class="code-fn">RandomForestClassifier</span>(<br>
+              &nbsp;&nbsp;n_estimators=<span class="code-number">300</span>,<br>
+              &nbsp;&nbsp;random_state=<span class="code-number">42</span><br>
+              )<br><br>
+              <span class="code-fn">print</span>(
+              <span class="code-string">"Datos → evidencia → decisiones"</span>
+              )
+            </div>
+          </div>
+
+          <div class="floating-badge">
+            <small>Autor</small>
+            Abraham Castro
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Resumen cuantitativo">
+      <div class="container stats-grid">
+        <article class="stat-card reveal">
+          <div class="stat-number">6</div>
+          <div class="stat-label">etapas formativas documentadas</div>
+        </article>
+
+        <article class="stat-card reveal">
+          <div class="stat-number">4</div>
+          <div class="stat-label">dashboards publicados en Tableau</div>
+        </article>
+
+        <article class="stat-card reveal">
+          <div class="stat-number">2</div>
+          <div class="stat-label">casos empresariales principales</div>
+        </article>
+
+        <article class="stat-card reveal">
+          <div class="stat-number">PACE</div>
+          <div class="stat-label">metodología de trabajo analítico</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="metodologia">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Metodología</span>
+          <h2>Del problema de negocio a una recomendación accionable</h2>
+          <p>
+            Cada proyecto se estructura mediante PACE para mantener una conexión
+            clara entre los datos, los modelos y las decisiones que deben tomar
+            los stakeholders.
+          </p>
+        </div>
+
+        <div class="pace-grid">
+          <article class="pace-card reveal" data-step="P">
+            <div class="pace-icon">P</div>
+            <h3>Plan</h3>
+            <p>
+              Comprensión del escenario, definición de objetivos, stakeholders,
+              entregables, riesgos y consideraciones éticas.
+            </p>
+          </article>
+
+          <article class="pace-card reveal" data-step="A">
+            <div class="pace-icon">A</div>
+            <h3>Analyze</h3>
+            <p>
+              Limpieza, descripción, visualización, identificación de patrones,
+              valores atípicos y relaciones entre variables.
+            </p>
+          </article>
+
+          <article class="pace-card reveal" data-step="C">
+            <div class="pace-icon">C</div>
+            <h3>Construct</h3>
+            <p>
+              Pruebas estadísticas, ingeniería de variables, regresión y
+              entrenamiento de modelos de clasificación.
+            </p>
+          </article>
+
+          <article class="pace-card reveal" data-step="E">
+            <div class="pace-icon">E</div>
+            <h3>Execute</h3>
+            <p>
+              Evaluación de resultados, interpretación, comunicación de
+              hallazgos y elaboración de recomendaciones.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cursos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Ruta de aprendizaje</span>
+          <h2>Seis proyectos conectados en una progresión técnica</h2>
+          <p>
+            El repositorio organiza el recorrido desde la inspección inicial de
+            datos hasta modelos de machine learning y un capstone de Recursos Humanos.
+          </p>
+        </div>
+
+        <div class="courses-grid">
+          <article class="course-card reveal">
+            <span class="course-number">01</span>
+            <span class="eyebrow">Fundamentos</span>
+            <h3>Foundations of Data Science</h3>
+            <p>
+              Introducción al rol del profesional de datos, marco PACE, inspección
+              de 22.699 viajes de taxis y preparación de la información para
+              análisis posteriores.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Data quality</span>
+            </div>
+            <div class="course-links">
+              <a
+                class="text-link"
+                href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/tree/main/1.%20Foundations%20of%20Data%20Science"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir carpeta ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="course-card reveal">
+            <span class="course-number">02</span>
+            <span class="eyebrow">EDA y visualización</span>
+            <h3>Go Beyond the Numbers: Translate Data into Insights</h3>
+            <p>
+              Análisis exploratorio del caso Automatidata, visualizaciones para
+              comprender tarifas, distancias, propinas y problemas de integridad.
+            </p>
+            <div class="tags">
+              <span class="tag">Seaborn</span>
+              <span class="tag">Matplotlib</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">EDA</span>
+            </div>
+            <div class="course-links">
+              <a
+                class="text-link"
+                href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/tree/main/2.%20Go%20Beyond%20the%20Numbers%20Translate%20Data%20into%20Insights"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir carpeta ↗
+              </a>
+              <a
+                class="text-link"
+                href="https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/2.%20Go%20Beyond%20the%20Numbers%20Translate%20Data%20into%20Insights/trabajo_final_automatidata_eda.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir Colab ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="course-card reveal">
+            <span class="course-number">03</span>
+            <span class="eyebrow">Inferencia</span>
+            <h3>The Power of Statistics</h3>
+            <p>
+              Estadística descriptiva e inferencial, formulación de hipótesis y
+              comparación de tarifas mediante pruebas estadísticas.
+            </p>
+            <div class="tags">
+              <span class="tag">SciPy</span>
+              <span class="tag">Prueba t</span>
+              <span class="tag">Hipótesis</span>
+              <span class="tag">Intervalos</span>
+            </div>
+            <div class="course-links">
+              <a
+                class="text-link"
+                href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/tree/main/3.%20The%20Power%20of%20Statistics"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir carpeta ↗
+              </a>
+              <a
+                class="text-link"
+                href="https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/3.%20The%20Power%20of%20Statistics/automatidata_statistical_analysis_colab.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir Colab ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="course-card reveal">
+            <span class="course-number">04</span>
+            <span class="eyebrow">Modelamiento</span>
+            <h3>Regression Analysis: Simplify Complex Data Relationships</h3>
+            <p>
+              Ingeniería de variables y regresión lineal múltiple para estimar
+              tarifas de taxi utilizando distancia, duración, temporalidad y ruta.
+            </p>
+            <div class="tags">
+              <span class="tag">Statsmodels</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">Regresión</span>
+              <span class="tag">Diagnósticos</span>
+            </div>
+            <div class="course-links">
+              <a
+                class="text-link"
+                href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/tree/main/4.%20Regression%20Analysis%20Simplify%20Complex%20Data%20Relationships"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir carpeta ↗
+              </a>
+              <a
+                class="text-link"
+                href="https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/4.%20Regression%20Analysis%20Simplify%20Complex%20Data%20Relationships/automatidata_multiple_linear_regression_colab.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir Colab ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="course-card reveal">
+            <span class="course-number">05</span>
+            <span class="eyebrow">Machine learning</span>
+            <h3>The Nuts and Bolts of Machine Learning</h3>
+            <p>
+              Clasificación de pasajeros con propinas generosas mediante Random
+              Forest y XGBoost, validación cruzada y ajuste de hiperparámetros.
+            </p>
+            <div class="tags">
+              <span class="tag">Random Forest</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">GridSearchCV</span>
+              <span class="tag">F1-score</span>
+            </div>
+            <div class="course-links">
+              <a
+                class="text-link"
+                href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/tree/main/5.%20The%20Nuts%20and%20Bolts%20of%20Machine%20Learning"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir carpeta ↗
+              </a>
+              <a
+                class="text-link"
+                href="https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/5.%20The%20Nuts%20and%20Bolts%20of%20Machine%20Learning/automatidata_machine_learning_colab.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir Colab ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="course-card reveal">
+            <span class="course-number">06</span>
+            <span class="eyebrow">Capstone</span>
+            <h3>Google Advanced Data Analytics Capstone</h3>
+            <p>
+              Caso Salifort Motors: análisis de rotación laboral y comparación
+              entre regresión logística y Random Forest para apoyar la retención.
+            </p>
+            <div class="tags">
+              <span class="tag">HR Analytics</span>
+              <span class="tag">Logistic Regression</span>
+              <span class="tag">Random Forest</span>
+              <span class="tag">Ética</span>
+            </div>
+            <div class="course-links">
+              <a
+                class="text-link"
+                href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/tree/main/6.%20Google%20Advanced%20Data%20Analytics%20Capstone"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir carpeta ↗
+              </a>
+              <a
+                class="text-link"
+                href="https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/6.%20Google%20Advanced%20Data%20Analytics%20Capstone/salifort_motors_employee_attrition_colab.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir Colab ↗
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Casos principales</span>
+          <h2>Proyectos completos con contexto empresarial</h2>
+          <p>
+            Los notebooks no se limitan a ejecutar algoritmos: conectan el
+            problema, la calidad de los datos, la evaluación y las implicancias
+            éticas con decisiones concretas.
+          </p>
+        </div>
+
+        <div class="project-layout">
+          <article class="feature-card reveal">
+            <div class="feature-top">
+              <div>
+                <span class="eyebrow">Movilidad urbana</span>
+                <h3>Automatidata y los viajes de taxis de Nueva York</h3>
+              </div>
+            </div>
+
+            <div class="feature-body">
+              <p>
+                Análisis progresivo del dataset de NYC TLC: inspección,
+                visualización, estadística, predicción de tarifas y clasificación
+                de pasajeros según su comportamiento de propina.
+              </p>
+
+              <ul class="finding-list">
+                <li>Detección de viajes con distancia cero y tarifas anómalas.</li>
+                <li>Comparación estadística entre tipos de pago.</li>
+                <li>Regresión múltiple para predecir el valor de la tarifa.</li>
+                <li>Random Forest y XGBoost para clasificación.</li>
+              </ul>
+
+              <a
+                class="button button-secondary"
+                href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Revisar notebooks ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-top">
+              <div>
+                <span class="eyebrow">People analytics</span>
+                <h3>Salifort Motors y la rotación de empleados</h3>
+              </div>
+            </div>
+
+            <div class="feature-body">
+              <p>
+                Proyecto final orientado a responder qué factores incrementan la
+                probabilidad de que una persona deje la empresa y cómo utilizar
+                el modelo de forma responsable.
+              </p>
+
+              <ul class="finding-list">
+                <li>Satisfacción y carga laboral como señales principales.</li>
+                <li>Ventana crítica de rotación entre los años 3 y 5.</li>
+                <li>Comparación entre regresión logística y Random Forest.</li>
+                <li>Recomendaciones de carga, promoción y desarrollo.</li>
+              </ul>
+
+              <a
+                class="button button-secondary"
+                href="https://colab.research.google.com/github/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate/blob/main/6.%20Google%20Advanced%20Data%20Analytics%20Capstone/salifort_motors_employee_attrition_colab.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir capstone en Colab ↗
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tableau-section" id="tableau">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Tableau Public</span>
+          <h2>Dashboards interactivos y comunicación visual</h2>
+          <p>
+            Cuatro trabajos publicados que demuestran análisis exploratorio,
+            movilidad urbana, estacionalidad y visualización geoespacial.
+            Puedes abrirlos dentro de esta página o directamente en Tableau.
+          </p>
+        </div>
+
+        <div class="tableau-grid">
+          <article class="tableau-card reveal">
+            <div class="tableau-preview">
+              <img
+                src="https://public.tableau.com/static/images/NY/NYCTaxiDataExploratoryAnalysisDataIntegrity/Distancevs_TotalAmountOutlierAnalysis/1_rss.png"
+                alt="Vista previa del dashboard NYC Taxi Data"
+                loading="lazy"
+              >
+              <div class="preview-overlay">
+                <button
+                  class="play-button viz-open"
+                  type="button"
+                  aria-label="Abrir dashboard de taxis de Nueva York"
+                  data-title="NYC Taxi Data: Exploratory Analysis & Data Integrity"
+                  data-viz="https://public.tableau.com/views/NYCTaxiDataExploratoryAnalysisDataIntegrity/Distancevs_TotalAmountOutlierAnalysis?:showVizHome=no&:embed=true"
+                >
+                  ▶
+                </button>
+              </div>
+            </div>
+            <div class="tableau-content">
+              <span class="eyebrow">EDA · Calidad de datos</span>
+              <h3>NYC Taxi Data: Exploratory Analysis & Data Integrity</h3>
+              <p>
+                Relación entre distancia y monto total para identificar valores
+                atípicos, tarifas elevadas y registros con distancia cero.
+              </p>
+              <div class="tableau-actions">
+                <button
+                  class="button button-primary viz-open"
+                  type="button"
+                  data-title="NYC Taxi Data: Exploratory Analysis & Data Integrity"
+                  data-viz="https://public.tableau.com/views/NYCTaxiDataExploratoryAnalysisDataIntegrity/Distancevs_TotalAmountOutlierAnalysis?:showVizHome=no&:embed=true"
+                >
+                  Ver aquí
+                </button>
+                <a
+                  class="button button-secondary"
+                  href="https://public.tableau.com/views/NYCTaxiDataExploratoryAnalysisDataIntegrity/Distancevs_TotalAmountOutlierAnalysis"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tableau ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="tableau-card reveal">
+            <div class="tableau-preview">
+              <img
+                src="https://public.tableau.com/static/images/Se/SeoulBikeDemandHolidayvs_Non-HolidayImpactAnalysis/Dashboard1/1_rss.png"
+                alt="Vista previa del dashboard de demanda de bicicletas en feriados"
+                loading="lazy"
+              >
+              <div class="preview-overlay">
+                <button
+                  class="play-button viz-open"
+                  type="button"
+                  aria-label="Abrir dashboard de demanda en feriados"
+                  data-title="Seoul Bike Demand: Holiday vs. Non-Holiday"
+                  data-viz="https://public.tableau.com/views/SeoulBikeDemandHolidayvs_Non-HolidayImpactAnalysis/Dashboard1?:showVizHome=no&:embed=true"
+                >
+                  ▶
+                </button>
+              </div>
+            </div>
+            <div class="tableau-content">
+              <span class="eyebrow">Series temporales</span>
+              <h3>Seoul Bike Demand: Holiday vs. Non-Holiday</h3>
+              <p>
+                Comparación de la demanda de bicicletas durante feriados, días
+                normales y jornadas adyacentes a fechas festivas.
+              </p>
+              <div class="tableau-actions">
+                <button
+                  class="button button-primary viz-open"
+                  type="button"
+                  data-title="Seoul Bike Demand: Holiday vs. Non-Holiday"
+                  data-viz="https://public.tableau.com/views/SeoulBikeDemandHolidayvs_Non-HolidayImpactAnalysis/Dashboard1?:showVizHome=no&:embed=true"
+                >
+                  Ver aquí
+                </button>
+                <a
+                  class="button button-secondary"
+                  href="https://public.tableau.com/views/SeoulBikeDemandHolidayvs_Non-HolidayImpactAnalysis/Dashboard1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tableau ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="tableau-card reveal">
+            <div class="tableau-preview">
+              <img
+                src="https://public.tableau.com/static/images/In/InteractiveGeospatialIntelligenceU_S_LightningMetricsDashboard/Dashboard1/1_rss.png"
+                alt="Vista previa del dashboard geoespacial de rayos en Estados Unidos"
+                loading="lazy"
+              >
+              <div class="preview-overlay">
+                <button
+                  class="play-button viz-open"
+                  type="button"
+                  aria-label="Abrir dashboard geoespacial de rayos"
+                  data-title="Interactive Geospatial Intelligence: U.S. Lightning Metrics"
+                  data-viz="https://public.tableau.com/views/InteractiveGeospatialIntelligenceU_S_LightningMetricsDashboard/Dashboard1?:showVizHome=no&:embed=true"
+                >
+                  ▶
+                </button>
+              </div>
+            </div>
+            <div class="tableau-content">
+              <span class="eyebrow">Geospatial analytics</span>
+              <h3>U.S. Lightning Metrics Dashboard</h3>
+              <p>
+                Exploración territorial de eventos de rayos mediante mapas,
+                selección de años, filtros e indicadores por ubicación.
+              </p>
+              <div class="tableau-actions">
+                <button
+                  class="button button-primary viz-open"
+                  type="button"
+                  data-title="Interactive Geospatial Intelligence: U.S. Lightning Metrics"
+                  data-viz="https://public.tableau.com/views/InteractiveGeospatialIntelligenceU_S_LightningMetricsDashboard/Dashboard1?:showVizHome=no&:embed=true"
+                >
+                  Ver aquí
+                </button>
+                <a
+                  class="button button-secondary"
+                  href="https://public.tableau.com/views/InteractiveGeospatialIntelligenceU_S_LightningMetricsDashboard/Dashboard1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tableau ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="tableau-card reveal">
+            <div class="tableau-preview">
+              <img
+                src="https://public.tableau.com/static/images/Se/SeoulBikeRentalAnalysisInteractiveTableauDashboardforUrbanMobility/Hoja2/1_rss.png"
+                alt="Vista previa del dashboard de alquiler de bicicletas en Seúl"
+                loading="lazy"
+              >
+              <div class="preview-overlay">
+                <button
+                  class="play-button viz-open"
+                  type="button"
+                  aria-label="Abrir dashboard de alquiler de bicicletas"
+                  data-title="Seoul Bike Rental Analysis"
+                  data-viz="https://public.tableau.com/views/SeoulBikeRentalAnalysisInteractiveTableauDashboardforUrbanMobility/Hoja2?:showVizHome=no&:embed=true"
+                >
+                  ▶
+                </button>
+              </div>
+            </div>
+            <div class="tableau-content">
+              <span class="eyebrow">Movilidad urbana</span>
+              <h3>Seoul Bike Rental Analysis</h3>
+              <p>
+                Demanda horaria de bicicletas según día de la semana y estación
+                del año para comprender patrones de movilidad.
+              </p>
+              <div class="tableau-actions">
+                <button
+                  class="button button-primary viz-open"
+                  type="button"
+                  data-title="Seoul Bike Rental Analysis"
+                  data-viz="https://public.tableau.com/views/SeoulBikeRentalAnalysisInteractiveTableauDashboardforUrbanMobility/Hoja2?:showVizHome=no&:embed=true"
+                >
+                  Ver aquí
+                </button>
+                <a
+                  class="button button-secondary"
+                  href="https://public.tableau.com/views/SeoulBikeRentalAnalysisInteractiveTableauDashboardforUrbanMobility/Hoja2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tableau ↗
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="herramientas">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Stack técnico</span>
+          <h2>Herramientas y competencias desarrolladas</h2>
+          <p>
+            El portafolio combina programación, análisis estadístico,
+            visualización, modelamiento y comunicación de resultados.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skills-panel reveal">
+            <h3>Tecnologías utilizadas</h3>
+            <div class="tool-cloud">
+              <span class="tool">Python</span>
+              <span class="tool">Pandas</span>
+              <span class="tool">NumPy</span>
+              <span class="tool">Matplotlib</span>
+              <span class="tool">Seaborn</span>
+              <span class="tool">SciPy</span>
+              <span class="tool">Statsmodels</span>
+              <span class="tool">Scikit-learn</span>
+              <span class="tool">XGBoost</span>
+              <span class="tool">Tableau</span>
+              <span class="tool">Jupyter Notebook</span>
+              <span class="tool">Google Colab</span>
+              <span class="tool">GitHub</span>
+            </div>
+          </article>
+
+          <article class="skills-panel reveal">
+            <h3>Competencias demostradas</h3>
+            <div class="competency-list">
+              <div class="competency">
+                <span class="competency-number">01</span>
+                <div>
+                  <strong>Calidad y preparación de datos</strong>
+                  <span>Nulos, duplicados, tipos, outliers y trazabilidad.</span>
+                </div>
+              </div>
+
+              <div class="competency">
+                <span class="competency-number">02</span>
+                <div>
+                  <strong>Estadística aplicada</strong>
+                  <span>Hipótesis, significancia e interpretación responsable.</span>
+                </div>
+              </div>
+
+              <div class="competency">
+                <span class="competency-number">03</span>
+                <div>
+                  <strong>Modelamiento predictivo</strong>
+                  <span>Regresión, clasificación, tuning y validación cruzada.</span>
+                </div>
+              </div>
+
+              <div class="competency">
+                <span class="competency-number">04</span>
+                <div>
+                  <strong>Comunicación ejecutiva</strong>
+                  <span>Visualizaciones, dashboards y recomendaciones accionables.</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-card reveal">
+          <h2>Explora el código, los notebooks y los resultados</h2>
+          <p>
+            El repositorio reúne los proyectos completos, archivos de datos,
+            documentación y notebooks compatibles con Google Colab.
+          </p>
+          <div class="cta-actions">
+            <a
+              class="button button-primary"
+              href="https://github.com/Abraham123w/Google-Advanced-Data-Analytics-Professional-Certificate"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir repositorio ↗
+            </a>
+
+            <a
+              class="button button-secondary"
+              href="https://github.com/Abraham123w"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver perfil de GitHub ↗
+            </a>
+
+            <a
+              class="button button-secondary"
+              href="https://www.linkedin.com/in/abraham-andes-castro-copa-40529a2a5/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        © <span id="currentYear"></span> Abraham Andrés Castro Copa.
+        Portafolio de análisis de datos.
+      </div>
+      <div class="footer-links">
+        <a href="mailto:castrocopaabrahamandres@gmail.com">Correo</a>
+        <a
+          href="https://github.com/Abraham123w"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://www.linkedin.com/in/abraham-andes-castro-copa-40529a2a5/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button
+    class="back-to-top"
+    id="backToTop"
+    type="button"
+    aria-label="Volver arriba"
+  >
+    ↑
+  </button>
+
+  <dialog class="viz-dialog" id="vizDialog">
+    <div class="dialog-header">
+      <h2 id="dialogTitle">Dashboard de Tableau</h2>
+      <button
+        class="dialog-close"
+        id="dialogClose"
+        type="button"
+        aria-label="Cerrar dashboard"
+      >
+        ✕
+      </button>
+    </div>
+    <iframe
+      class="viz-frame"
+      id="vizFrame"
+      title="Dashboard interactivo de Tableau"
+      loading="lazy"
+      allowfullscreen
+    ></iframe>
+  </dialog>
+
+  <script>
+    const body = document.body;
+    const themeButton = document.getElementById("themeButton");
+    const themeIcon = document.getElementById("themeIcon");
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+    const backToTop = document.getElementById("backToTop");
+    const vizDialog = document.getElementById("vizDialog");
+    const vizFrame = document.getElementById("vizFrame");
+    const dialogTitle = document.getElementById("dialogTitle");
+    const dialogClose = document.getElementById("dialogClose");
+
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme === "light") {
+      body.classList.add("light-theme");
+      themeIcon.textContent = "☾";
+    }
+
+    themeButton.addEventListener("click", () => {
+      const isLight = body.classList.toggle("light-theme");
+      themeIcon.textContent = isLight ? "☾" : "☀";
+      localStorage.setItem("portfolio-theme", isLight ? "light" : "dark");
+    });
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+      });
+    });
+
+    document.querySelectorAll(".viz-open").forEach((button) => {
+      button.addEventListener("click", () => {
+        const url = button.dataset.viz;
+        const title = button.dataset.title || "Dashboard de Tableau";
+
+        dialogTitle.textContent = title;
+        vizFrame.src = url;
+
+        if (typeof vizDialog.showModal === "function") {
+          vizDialog.showModal();
+        } else {
+          window.open(url, "_blank", "noopener,noreferrer");
+        }
+      });
+    });
+
+    const closeDialog = () => {
+      vizDialog.close();
+      vizFrame.src = "";
+    };
+
+    dialogClose.addEventListener("click", closeDialog);
+
+    vizDialog.addEventListener("click", (event) => {
+      const rect = vizDialog.getBoundingClientRect();
+      const clickedOutside =
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom;
+
+      if (clickedOutside) closeDialog();
+    });
+
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("visible", window.scrollY > 650);
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((element) => {
+      revealObserver.observe(element);
+    });
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
